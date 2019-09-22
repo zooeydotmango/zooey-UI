@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/zooeydotmango/zooey-UI/issues"
   },
-  "homepage": "https://github.com/zooeydotmango/zooey-UI#readme"
+  "homepage": "https://github.com/zooeydotmango/zooey-UI#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
 }
