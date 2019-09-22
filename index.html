@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
-<head>      
+<head>
     <meta charset="UTF-8">
     <title>zooey-IU</title>
+    <script src="//at.alicdn.com/t/font_1429425_6uhh1yy47yj.js"></script>
 </head>
 <style>
     * {
@@ -10,6 +11,7 @@
         margin: 0;
         box-sizing: border-box;
     }
+
     :root {
         --button-height: 32px;
         --font-size: 14px;
@@ -20,10 +22,23 @@
         --border-color-hover: #666;
     }
 </style>
-
+<style>
+    .icon {
+        width: 1em;
+        height: 1em;
+    }
+</style>
 <body>
 <div id="app">
-    <g-button></g-button>
+    <g-button >
+        按钮
+    </g-button>
+    <g-button icon="settings" icon-position="left">
+        按钮
+    </g-button>
+    <g-button icon="settings" icon-position="right">
+        按钮
+    </g-button>
 </div>
 <script src="./src/app.js"></script>
 </body>
