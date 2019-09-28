@@ -33,6 +33,19 @@
                 gutter: 0
             }
         },
+        methods:{
+            createClass(obj, str=''){
+                if(!obj)return []
+                let array=[]
+                if(obj.span){
+                    array.push(`col-${str}${obj.span}`)
+                }
+                if(obj.offset){
+                    array.push(`offset-${str}${obj.offset}`)
+                }
+                return array
+            }
+        },
         computed: {
             colStyle() {
                 return {
@@ -42,13 +55,13 @@
             },
             colClass() {
                 let {span, offset, pad, narrowPc, pc, widePc} = this
+                let createClass=this.createClass
                 return [
-                    span && `col-${span}`,
-                    offset && `offset-${offset}`,
-                    ...(pad ? [`col-pad-${pad.span}`] : []),
-                    ...(narrowPc ? [`col-narrow-pc-${narrowPc.span}`] : []),
-                    ...(pc ? [`col-pc-${pc.span}`] : []),
-                    ...(widePc ? [`col-wide-pc-${widePc.span}`] : []),
+                    ...createClass({span,offset}),
+                    ...createClass(pad,'pad-'),
+                    ...createClass(narrowPc,'narrow-pc-'),
+                    ...createClass(pc,'pc-'),
+                    ...createClass(widePc,'wide-pc-')
                 ]
             }
         }
