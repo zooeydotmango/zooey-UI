@@ -38,8 +38,6 @@
 </script>
 <style lang="scss" scoped>
     .col{
-        width: 50%;
-        height: 100px;
         margin: 0 ;
         $class-col: col-;
         $class-offset: offset-;
