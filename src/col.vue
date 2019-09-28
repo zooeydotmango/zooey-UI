@@ -26,7 +26,7 @@
             pad: {type: Object, validator,},
             narrowPc: {type: Object, validator,},
             pc: {type: Object, validator,},
-            widePc: {type: Object, validator,}
+            widePc: {type: Object, validator,},
         },
         data() {
             return {
@@ -45,10 +45,10 @@
                 return [
                     span && `col-${span}`,
                     offset && `offset-${offset}`,
-                    ...(pad && [`col-pad-${pad.span}`]),
-                    ...(narrowPc && [`col-narrow-pc-${narrowPc.span}`]),
-                    ...(pc && [`col-pc-${pc.span}`]),
-                    ...(widePc && [`col-wide-pc-${widePc.span}`]),
+                    ...(pad ? [`col-pad-${pad.span}`] : []),
+                    ...(narrowPc ? [`col-narrow-pc-${narrowPc.span}`] : []),
+                    ...(pc ? [`col-pc-${pc.span}`] : []),
+                    ...(widePc ? [`col-wide-pc-${widePc.span}`] : []),
                 ]
             }
         }
@@ -69,9 +69,8 @@
             }
         }
     }
-    
 
-    @media (min-width: 577px) and (max-width: 768px) {
+    @media (min-width: 577px) {
         .col {
             $class-col: col-pad-;
             $class-offset: offset-pad-;
@@ -88,10 +87,27 @@
         }
     }
 
-    @media (min-width: 769px) and (max-width: 992px) {
+    @media (min-width: 769px){
         .col {
             $class-col: col-narrow-pc-;
             $class-offset: offset-narrow-pc-;
+            @for $n from 1 through 24 {
+                &.#{$class-col}#{$n} {
+                    width: ($n / 24)*100%;
+                }
+            }
+            @for $n from 1 through 24 {
+                &.#{$class-offset}#{$n} {
+                    margin-left: ($n / 24)*100%;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 993px){
+        .col {
+            $class-col: col-pc-;
+            $class-offset: offset-pc-;
             @for $n from 1 through 24 {
                 &.#{$class-col}#{$n} {
                     width: ($n / 24)*100%;
