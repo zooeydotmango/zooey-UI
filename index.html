@@ -26,22 +26,33 @@ img{
 
 <body>
 <div id="app">
-    <g-row gutter="20">
-        <g-col>11</g-col>
-        <g-col>22</g-col>
-    </g-row>
-    <g-row gutter="20">
+    <g-row gutter="24">
+        <g-col span="2"
+               :pad="{span:8}"
+               :narrow-pc="{span:6}"
+               :pc="{span:4}"
+               :wide-pc="{span:2}"
+        >
+            11
+        </g-col>
+        <g-col span="24"
+               :pad="{span:16}"
+               :narrow-pc="{span:18}"
+               :pc="{span:20}"
+               :wide-pc="{span:22}"
+        >
+            22
+        </g-col>
+
         <g-col>11</g-col>
         <g-col>22</g-col>
         <g-col>33</g-col>
-    </g-row>
-    <g-row gutter="20">
+
         <g-col>11</g-col>
         <g-col>22</g-col>
         <g-col>33</g-col>
         <g-col>44</g-col>
-    </g-row>
-    <g-row gutter="20">
+
         <g-col span="2">2</g-col>
         <g-col span="20" offset="2">22</g-col>
     </g-row>
