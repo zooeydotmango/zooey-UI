@@ -5,7 +5,41 @@
 </template>
 <script>
     export default {
-        name:'zooeyToast'
+        name:'zooeyToast',
+        props: {
+            autoClose:{
+                type: Boolean,
+                default: true
+            },
+            autoCloseDelay:{
+                type: Number,
+                default: 5
+            },
+            closeButton:{
+                type: Object,
+                default(){
+                    return{
+                        text:'关闭',
+                        callback:(toast)=>{
+                            toast.close()
+                        }
+                    }
+                }
+            }
+        },
+        mounted(){
+            if(this.autoClose){
+                setTimeout(()=>{
+                    this.close()
+                }, this.autoCloseDelay*1000)
+            }
+        },
+        methods:{
+            close(){
+                this.$el.remove()
+                this.$destroy()
+            }
+        }
     }
 </script>
 <style lang="scss" scoped>
