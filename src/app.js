@@ -35,11 +35,12 @@ new Vue({
         loading3: false,
         message: 'hi'
     },
-    created() {
-    },
     methods: {
         showToast() {
             this.$toast('<strong>这个button</strong>', {
+                position:'middle',
+                autoClose:false,
+                autoCloseDelay:3,
                 closeButton: {
                     text: '知道了',
                     callback() {
