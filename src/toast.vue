@@ -37,11 +37,11 @@
                 type: Boolean,
                 default: false
             },
-            position:{
+            position: {
                 type: String,
                 default: 'top',
-                validator(value){
-                    return ['top','bottom','middle'].indexOf(value)>=0
+                validator(value) {
+                    return ['top', 'bottom', 'middle'].indexOf(value) >= 0
                 }
             }
         },
@@ -49,10 +49,10 @@
             this.updateStyles();
             this.execAutoClose()
         },
-        computed:{
-            toastClasses(){
+        computed: {
+            toastClasses() {
                 return {
-                    [`position-${this.position}`]:true
+                    [`position-${this.position}`]: true
                 }
             }
         },
@@ -88,7 +88,12 @@
     $toast-min-height: 40px;
     $font-size: 14px;
     $font-color: #fff;
+    @keyframes fade-in {
+        0%{opacity: 0; transform: translateY(100%)}
+        100%{opacity: 100; transform: translateY(0%)}
+    }
     .toast {
+        animation: fade-in 1s;
         font-size: $font-size;
         min-height: $toast-min-height;
         background-color: $bg-color;
@@ -100,32 +105,30 @@
         align-items: center;
         position: fixed;
         left: 50%;
-        
-    
 
-    .close {
-        padding-left: 16px;
-    }
-    
-    .line {
-        border-left: 1px solid #666;
-        height: 100%;
-        margin-left: 16px;
-    }
-    .message{
-        padding: 4px 0;
-    }
-        &.position-top{
+        .close {
+            padding-left: 16px;
+        }
+
+        .line {
+            border-left: 1px solid #666;
+            height: 100%;
+            margin-left: 16px;
+        }
+        .message {
+            padding: 4px 0;
+        }
+        &.position-top {
             top: 0;
             transform: translateX(-50%);
         }
-        &.position-bottom{
+        &.position-bottom {
             bottom: 0;
             transform: translateX(-50%);
         }
-        &.position-middle{
+        &.position-middle {
             top: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%, -50%);
         }
     }
 </style>
