@@ -4,6 +4,7 @@
     </div>
 </template>
 <script>
+    import Vue from 'vue'
     export default {
         name: 'zooeyTabs',
         props:{
@@ -19,8 +20,20 @@
                 }
             }
         },
-        created(){
-            // this.$emit('update:selected','xxx')
+        data(){
+            return {
+                eventBus: new Vue()
+            }
+        },
+        mounted(){
+            console.log(this.selected);
+            this.eventBus.$emit('update:selected', this.selected)
+        }
+        ,
+        provide(){
+            return {
+                eventBus: this.eventBus
+            }
         }
     }
 </script>

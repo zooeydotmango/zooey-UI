@@ -45,10 +45,8 @@ new Vue({
         loading2: false,
         loading3: false,
         message: 'hi',
-        selectedTab: {
-            type:String,
-            default: 'sports'
-        }
+        selectedTab: 'sports'
+        
     },
     methods: {
         showToast1(){

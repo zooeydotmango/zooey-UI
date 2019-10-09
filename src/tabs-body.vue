@@ -5,7 +5,10 @@
 </template>
 <script>
     export default {
-        name: 'zooeyTabs-body'
+        name: 'zooeyTabs-body',
+        inject:['eventBus'],
+        created(){
+        }
     }
 </script>
 <style lang="scss" scoped> 
