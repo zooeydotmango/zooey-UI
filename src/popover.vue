@@ -1,7 +1,7 @@
 <template>
-    <div class="popover" @click="xxx">
-        <div class="content-wrapper" v-if="visible">
-            <slot name="content" ></slot>
+    <div class="popover" @click.stop="xxx">
+        <div class="content-wrapper" v-if="visible" @click.stop>
+            <slot name="content"></slot>
         </div>
         <slot></slot>
     </div>
@@ -10,31 +10,42 @@
 <script>
     export default {
         name: "zooeyPopover",
-        data(){
-            return{
-                visible:false
+        data() {
+            return {
+                visible: false
             }
         },
-        methods:{
-            xxx(){
-                console.log('点击了popover');
-                this.visible=!this.visible; 
+        methods: {
+            xxx() {
+                this.visible = !this.visible;
+                console.log(`切换 visible为${this.visible}`);
+                if (this.visible === true) {
+                    this.$nextTick(()=>{
+                        let eventHandler=()=>{
+                            this.visible = false
+                            console.log(`切换2 visible为${this.visible}`);
+                            document.removeEventListener('click', eventHandler)
+                        }
+                        document.addEventListener('click', eventHandler )
+                        
+                    })
+                }
             }
         }
     }
 </script>
 
 <style scoped lang="scss">
-    .popover{
+    .popover {
         display: inline-block;
         vertical-align: top;
         position: relative;
-        >.content-wrapper{
+        > .content-wrapper {
             position: absolute;
             bottom: 100%;
             left: 0;
-            box-shadow:0 0 3px rgba(0,0,0,.55)
+            box-shadow: 0 0 3px rgba(0, 0, 0, .55)
         }
     }
-    
+
 </style>
