@@ -41,8 +41,8 @@
         }
     }
 </script>
-<style lang="scss" scoped> 
-    $blue: blue;
+<style lang="scss" scoped>
+    $blue: #2796e6;
     .tabs-item{
         flex-shrink: 0;
         padding: 0 1em;

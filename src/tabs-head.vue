@@ -22,14 +22,19 @@
 </script>
 <style lang="scss" scoped>
     $tab-height:50px;
-    $blue: blue;
+    $blue: #2796e6;
+    $border-color: #ddd;
     .tabs-header{
         display: flex;
         height: $tab-height;
         justify-content: flex-start;
         position: relative;
+        border-bottom: 1px solid $border-color;
         > .actions-wrapper{
             margin-left: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         > .line{
             position: absolute;
