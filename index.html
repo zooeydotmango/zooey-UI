@@ -29,7 +29,8 @@ img{
 </div>
 <div id="app" style="padding: 100px;">
     <g-popover>
-        <template slot="content">
+        <template slot="content" slot-scope="{close}">
+            <g-button @click="close">关闭</g-button>
             <div>popover内容</div>
         </template>
         <g-button>点我按钮</g-button>
