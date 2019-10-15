@@ -24,7 +24,7 @@
                 this.$refs.contentWrapper.style.left = `${left + window.scrollX}px`;
                 this.$refs.contentWrapper.style.top = `${top + window.scrollY}px`;
             },
-            onClickDocument(e){
+            onClickDocument(e) {
                 if (this.$refs.popover
                     && (this.$refs.contentWrapper.contains(e.target) || this.$refs.popover.contains(e.target))) {
                     return;
@@ -32,21 +32,21 @@
                 this.close();
             },
             open() {
-                this.visible=true;
+                this.visible = true;
                 this.$nextTick(() => {
                     this.positionContent();
                     document.addEventListener('click', this.onClickDocument)
                 })
             },
-            close(){
-                this.visible=false;
+            close() {
+                this.visible = false;
                 document.removeEventListener('click', this.onClickDocument)
             },
             onclick(event) {
                 if (this.$refs.triggerWrapper.contains(event.target)) {
                     if (this.visible === true) {
                         this.close();
-                    }else {
+                    } else {
                         this.open();
                     }
                 }

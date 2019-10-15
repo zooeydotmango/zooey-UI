@@ -26,11 +26,16 @@
                 eventBus: new Vue()
             }
         },
-        mounted() {
-            if (this.$children.length === 0) {
-                console && console.warn
-                && console.warn('tabs的子组件应该是tabs-head和tab-body，但是你写子组件')
+        methods: {
+            checkChildren() {
+                if (this.$children.length === 0) {
+                    console && console.warn
+                    && console.warn('tabs的子组件应该是tabs-head和tab-body，但是你写子组件')
+                }
             }
+        },
+        mounted() {
+            this.checkChildren();
             this.$children.forEach((vm) => {
                 if (vm.$options.name === 'zooeyTabs-header') {
                     vm.$children.forEach((item) => {
@@ -41,7 +46,6 @@
                     })
                 }
             })
-
         }
         ,
         provide() {
