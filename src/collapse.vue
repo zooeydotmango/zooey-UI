@@ -18,6 +18,9 @@
             single:{
                 type:Boolean,
                 default: false
+            },
+            selected:{
+                type:String
             }
         },
         provide(){
@@ -27,6 +30,9 @@
                 }    
             } 
             
+        },
+        mounted(){
+            this.eventBus.$emit('update:selected', this.selected)
         }
     }
 </script>
