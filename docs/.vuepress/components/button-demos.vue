@@ -16,7 +16,7 @@
     import Button from '../../../src/button'
 
     export default {
-        component: {
+        components: {
             'g-button': Button
         },
         data() {
