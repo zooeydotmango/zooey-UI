@@ -25,31 +25,25 @@
         },
         data() {
             return {
-                visible: false
+                visible: false,
             }
         },
         mounted() {
-            this.eventBus && this.eventBus.$on('update:selected', (name) => {
-                if (name !== this.name) {
-                    this.close();
+            this.eventBus && this.eventBus.$on('update:selected', (names) => {
+                if (names.indexOf(this.name) >=0) {
+                    this.visible = true;
                 }else{
-                    this.open()
+                    this.visible = false;
                 }
             })
         },
         methods: {
             toggle() {
                 if (this.visible) {
-                    this.close()
+                    this.eventBus && this.eventBus.$emit('update:removeSelected', this.name)
                 } else {
-                    this.eventBus && this.eventBus.$emit('update:selected', this.name)
+                    this.eventBus && this.eventBus.$emit('update:addSelected', this.name)
                 }
-            },
-            close() {
-                this.visible = false;
-            },
-            open(){
-                this.visible = true;
             }
         }
     }
