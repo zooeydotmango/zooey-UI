@@ -8,7 +8,6 @@ module.exports = {
             {text:'文档', link: '/guide/'},
             {text:'交流', link: '/https://google.com'},
         ],
-        
         sidebar: [
             {
                 title:'入门',
@@ -17,7 +16,15 @@ module.exports = {
             ,
             {
                 title: '组件',
-                children: ['/components/button']
+                children: [
+                    '/components/button',
+                    '/components/tab',
+                    '/components/input',
+                    '/components/grid',
+                    '/components/layout',
+                    '/components/toast',
+                    '/components/popover',
+                ]
             }
         ]
     }
