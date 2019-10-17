@@ -20,7 +20,10 @@ img{
 <body> 
 
 <div id="app" style="padding: 100px;">
-    <g-button icon="settings">默认</g-button>
+    <g-button>默认按钮</g-button>
+    <g-button icon="settings">默认按钮</g-button>
+    <g-button :loading="true">默认按钮</g-button>
+    <g-button disabled>默认按钮</g-button>
     <g-collapse single :selected.sync="selectedTab">
         <g-collapse-item title="标题1" name="1">内容1</g-collapse-item>
         <g-collapse-item title="标题2" name="2">内容2</g-collapse-item>

@@ -1,6 +1,7 @@
 module.exports = {
     title: 'Zooey UI',
     description: '一个简单好用的UI框架',
+    base: '/zooey-UI/',
     themeConfig: {
         nav:[
             {text:'主页', link: '/'},

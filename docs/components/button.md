@@ -1,5 +1,6 @@
 # 按钮
 
 使用方法rew
-
-<button-demos/>
+<ClientOnly> 
+<button-demos></button-demos>
+</ClientOnly>
