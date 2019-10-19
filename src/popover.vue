@@ -38,7 +38,7 @@
             if(this.trigger === 'click'){
                 this.$refs.popover.addEventListener('click', this.onclick);
             }else{
-                this.$refs.popover.addEventListener('mouseenter', this.visible);
+                this.$refs.popover.addEventListener('mouseenter', this.open);
                 this.$refs.popover.addEventListener('mouseleave', this.close);
             }
         },
@@ -46,7 +46,7 @@
             if(this.trigger === 'click'){
                 this.$refs.popover.removeEventListener('click', this.onclick);
             }else{
-                this.$refs.popover.removeEventListener('mouseenter', this.visible);
+                this.$refs.popover.removeEventListener('mouseenter', this.open);
                 this.$refs.popover.removeEventListener('mouseleave', this.close);
             }
         },
@@ -88,7 +88,7 @@
                 }
                 this.close();
             },
-            visible() {
+            open() {
                 this.visible = true;
                 this.$nextTick(() => {
                     this.positionContent();
@@ -104,7 +104,7 @@
                     if (this.visible === true) {
                         this.close();
                     } else {
-                        this.visible();
+                        this.open();
                     }
                 }
             }

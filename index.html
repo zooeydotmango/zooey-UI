@@ -30,6 +30,31 @@ img{
         <g-collapse-item title="标题3" name="3">内容3</g-collapse-item>
         {{selectedTab}}
     </g-collapse>
+
+    <g-popover>
+        <g-button>上方弹出</g-button>
+        <template slot="content">
+            弹出内容
+        </template>
+    </g-popover>
+    <g-popover position="bottom">
+        <g-button>下方弹出</g-button>
+        <template slot="content">
+            弹出内容
+        </template>
+    </g-popover>
+    <g-popover position="left">
+        <g-button>左边弹出</g-button>
+        <template slot="content">
+            弹出内容
+        </template>
+    </g-popover>
+    <g-popover position="right">
+        <g-button>右边弹出</g-button>
+        <template slot="content">
+            弹出内容
+        </template>
+    </g-popover>
 </div>
 <button disabled>关闭</button>
 <script src="./src/app.js"></script>
