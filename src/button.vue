@@ -1,4 +1,3 @@
-//单文件组件
 <template>
     <button class="g-button" :class="{[`icon-${iconPosition}`]: true}"
         @click="$emit('click')">
@@ -10,9 +9,7 @@
     </button>
 </template>
 <script>
-    // import Vue from 'vue'
     import Icon from './icon'
-    // Vue.component('g-icon', Icon)
     export default {
         name:'zooeyButton',
         components:{
@@ -28,7 +25,6 @@
                 type: String,
                 default: 'left',
                 validator: function (value) {
-                    // return !(value !== 'left' && value !== 'right');
                     return value === 'left' || value === 'right';
                 }
             }
@@ -62,6 +58,7 @@
         justify-content: center;
         align-items: center;
         vertical-align: middle;
+        cursor: pointer;
         &:hover {
             border: 1px solid $border-color-hover;
         }
