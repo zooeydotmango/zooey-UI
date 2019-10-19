@@ -1,7 +1,7 @@
 import Toast from './toast'
 
 
-let currentToast
+let currentToast;
 
 export default {
     install(Vue, options) {
@@ -27,7 +27,7 @@ function createToast({Vue, message, propsData, onClose}) {
     const toast = new constructor({propsData});
     toast.$slots.default = [message];
     toast.$mount();
-    toast.$on('close', onClose)
-    document.body.appendChild(toast.$el)
+    toast.$on('close', onClose);
+    document.body.appendChild(toast.$el);
     return toast
 }
