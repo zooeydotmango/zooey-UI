@@ -25,24 +25,24 @@ import CollapseItem from './collapse/collapse-item'
 Vue.component('g-button', Button);
 Vue.component('g-icon', Icon);
 Vue.component('g-button-group', ButtonGroup);
-Vue.component('g-input', Input)
-Vue.component('g-row', Row)
-Vue.component('g-col', Col)
-Vue.component('g-layout', Layout)
-Vue.component('g-content', Content)
-Vue.component('g-header', Header)
-Vue.component('g-footer', Footer)
-Vue.component('g-sider', Sider)
-Vue.component('g-toast', Toast)
-Vue.component('g-tabs', Tabs)
-Vue.component('g-tabs-head', TabsHead)
-Vue.component('g-tabs-body', TabsBody)
-Vue.component('g-tabs-item', TabsItem)
-Vue.component('g-tabs-pane', TabsPane)
-Vue.component('g-popover', Popover)
-Vue.component('g-collapse', Collapse)
-Vue.component('g-collapse-item', CollapseItem)
-Vue.use(Plugin)
+Vue.component('g-input', Input);
+Vue.component('g-row', Row);
+Vue.component('g-col', Col);
+Vue.component('g-layout', Layout);
+Vue.component('g-content', Content);
+Vue.component('g-header', Header);
+Vue.component('g-footer', Footer);
+Vue.component('g-sider', Sider);
+Vue.component('g-toast', Toast);
+Vue.component('g-tabs', Tabs);
+Vue.component('g-tabs-head', TabsHead);
+Vue.component('g-tabs-body', TabsBody);
+Vue.component('g-tabs-item', TabsItem);
+Vue.component('g-tabs-pane', TabsPane);
+Vue.component('g-popover', Popover);
+Vue.component('g-collapse', Collapse);
+Vue.component('g-collapse-item', CollapseItem);
+Vue.use(Plugin);
 
 new Vue({
     el: '#app',
@@ -51,32 +51,11 @@ new Vue({
         loading2: false,
         loading3: false,
         message: 'hi',
-        selectedTab: ['1','2']
+        selectedTab: ['1','2'],
+        selected: '1'
         
     },
     methods: {
-        showToast1(){
-            this.showToast('top')
-        },
-        showToast2(){
-            this.showToast('middle')
-        },
-        showToast3(){
-            this.showToast('bottom')
-        },
-        showToast(position) {
-            this.$toast('<strong>这个button</strong>', {
-                position,
-                autoClose:2,
-                closeButton: {
-                    text: '知道了',
-                    callback() {
-                        console.log('用户说他知道了')
-                    }
-                },
-                enableHtml: true
-            })
-        }
     }
 });
 

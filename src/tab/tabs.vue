@@ -26,32 +26,34 @@
                 eventBus: new Vue()
             }
         },
+        provide() {
+            return {
+                eventBus: this.eventBus
+            }
+        },
         methods: {
             checkChildren() {
                 if (this.$children.length === 0) {
                     console && console.warn
                     && console.warn('tabs的子组件应该是tabs-head和tab-body，但是你写子组件')
                 }
+            },
+            selectTab(){
+                this.$children.forEach((vm) => {
+                    if (vm.$options.name === 'zooeyTabs-header') {
+                        vm.$children.forEach((childVm) => {
+                            if (childVm.$options.name === 'zooeyTabs-item'
+                                && childVm.name === this.selected) {
+                                this.eventBus.$emit('update:selected', this.selected, childVm)
+                            }
+                        })
+                    }
+                })
             }
         },
         mounted() {
             this.checkChildren();
-            this.$children.forEach((vm) => {
-                if (vm.$options.name === 'zooeyTabs-header') {
-                    vm.$children.forEach((item) => {
-                        if (item.$options.name === 'zooeyTabs-item'
-                            && item.name === this.selected) {
-                            this.eventBus.$emit('update:selected', this.selected, item)
-                        }
-                    })
-                }
-            })
-        }
-        ,
-        provide() {
-            return {
-                eventBus: this.eventBus
-            }
+            this.selectTab();
         }
     }
 </script>
