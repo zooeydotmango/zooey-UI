@@ -4,9 +4,9 @@
         <p>
             <strong>预览</strong>
         </p>
-        <g-input value="中文"></g-input>
-        <g-input value="中文" disabled></g-input>
-        <g-input value="中文" readonly></g-input>
+        <g-input value="正常"></g-input>
+        <g-input value="禁用" disabled></g-input>
+        <g-input value="只读" readonly></g-input>
 
         <p>
             <strong>代码</strong>
@@ -26,9 +26,9 @@
                 selected: '1',
                 content: `
         <g-input></g-input>
-        <g-input value="中文"></g-input>
-        <g-input value="中文" disabled></g-input>
-        <g-input value="中文" readonly></g-input>
+        <g-input value="正常"></g-input>
+        <g-input value="禁用" disabled></g-input>
+        <g-input value="只读" readonly></g-input>
         `.replace(/^ {4}/gm, '').trim()
             }
         }
