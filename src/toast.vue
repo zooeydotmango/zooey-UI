@@ -1,14 +1,17 @@
 <template>
-    <div class="wrapper" :class="toastClasses">
+    <div class="zooey-toast" :class="toastClasses">
         <div class="toast" ref="toast">
             <div class="message">
                 <slot v-if="!enableHtml"></slot>
                 <div v-else v-html="$slots.default[0]"></div>
             </div>
-            <div class="line" ref="line"></div>
-            <span class="close" v-if="closeButton" @click="onClickClose">
-            {{closeButton.text}}
-            </span>
+            <div v-if="closeButton" class="closeWrapper">
+                <div class="line" ref="line"></div>
+                <span class="close" @click="onClickClose">
+                {{closeButton.text}}
+                </span>
+            </div>
+
         </div>
     </div>
 </template>
@@ -18,21 +21,18 @@
         props: {
             autoClose: {
                 type: [Boolean, Number],
-                default: 2,
-                validator(value){
-                    return value === true || typeof value === 'number'
+                default: 5,
+                validator(value) {
+                    return value === false || typeof value === 'number'
                 }
             },
             closeButton: {
                 type: Object,
-                default() {
-                    return {
-                        text: '关闭',
-                        callback: (toast) => {
-                            toast.close()
-                        }
-                    }
-                }
+                // default() {
+                //     return {
+                //         text: '关闭', callback: undefined
+                //     }
+                // }
             },
             enableHtml: {
                 type: Boolean,
@@ -67,8 +67,10 @@
             },
             updateStyles() {
                 this.$nextTick(() => {
-                    this.$refs.line.style.height =
-                        `${this.$refs.toast.getBoundingClientRect().height}px`
+                    if (this.$refs.line){
+                        this.$refs.line.style.height =
+                            `${this.$refs.toast.getBoundingClientRect().height}px`
+                    }
                 })
             },
             close() {
@@ -79,7 +81,7 @@
             onClickClose() {
                 this.close();
                 if (this.closeButton && typeof this.closeButton.callback === 'function') {
-                    this.closeButton.callback(this)
+                    this.closeButton.callback(this)     //this === toast实例
                 }
             }
         }
@@ -89,8 +91,6 @@
     $bg-color: rgba(0, 0, 0, .75);
     $toast-min-height: 40px;
     $font-size: 14px;
-    $font-color: #fff;
-    $animation-duration: 1s;
     @keyframes slide-up {
         0% {
             opacity: 0;
@@ -122,10 +122,11 @@
         }
     }
 
-    .wrapper {
+    .zooey-toast {
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
+        $animation-duration: 300ms;
         &.position-top {
             top: 0;
             .toast {
@@ -152,28 +153,33 @@
     }
 
     .toast {
-
         font-size: $font-size;
         min-height: $toast-min-height;
         background-color: $bg-color;
-        box-shadow: 0 0 1px 0 rgba(0, 0, 0, .75);
-        color: $font-color;
+        box-shadow: 0 0 1px 0 $bg-color;
+        color: white;
         padding: 0 20px;
         border-radius: 5px;
         display: flex;
         align-items: center;
 
-        .close {
-            padding-left: 16px;
-        }
+        .closeWrapper {
+            display: inline-flex;
+            align-items: center;
+            .close {
+                padding-left: 16px;
+                flex-shrink: 0;
+                cursor: pointer;
+            }
 
-        .line {
-            border-left: 1px solid #666;
-            height: 100%;
-            margin-left: 16px;
+            .line {
+                border-left: 1px solid #666;
+                height: 100%;
+                margin-left: 16px;
+            }
         }
         .message {
-            padding: 4px 0;
+            padding: 8px 0;
         }
 
     }

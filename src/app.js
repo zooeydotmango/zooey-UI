@@ -10,8 +10,8 @@ import Header from './layout/header'
 import Footer from './layout/footer'
 import Layout from './layout/layout'
 import Sider from './layout/sider'
-import Toast from './toast/toast'
-import Plugin from './toast/plugin'
+import Toast from './toast'
+import Plugin from './plugin'
 import Tabs from './tab/tabs'
 import TabsHead from './tab/tabs-head'
 import TabsBody from './tab/tabs-body'
@@ -56,6 +56,17 @@ new Vue({
         
     },
     methods: {
+        onClickButton () {
+            this.$toast('你知道我在等你吗？', {
+                closeButton: {
+                    text: '知道了',
+                    callback: () => {
+                        console.log('他说知道了')
+                    }
+                },
+                autoClose:false
+            })
+        }
     }
 });
 
