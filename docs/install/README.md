@@ -5,7 +5,7 @@ title: 安装
 # 安装
 
 ```
-npm install zooey-ui -S
+npm install zooeyui -S
 ```
 或者
 ```
